@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /build/
 CMakeFiles/
@@ -13,3 +14,9 @@ CMakeCache.txt
 .vscode/
 .idea/
 .DS_Store
+=======
+build*
+cmake-*
+.cache
+.vscode
+>>>>>>> 159d286 (Set up template for exercise)
