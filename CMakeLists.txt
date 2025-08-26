@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.20)
 project(mips LANGUAGES CXX)
 
@@ -44,17 +45,36 @@ target_link_libraries(my_gtest_tests my_library GTest::gtest_main)
 >>>>>>> 159d286 (Set up template for exercise)
 =======
 
+=======
+>>>>>>> c2b8e10 (init)
 cmake_minimum_required(VERSION 3.20)
-project(mips CXX)
+project(mips LANGUAGES CXX)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_compile_options(-Wall -Wextra -pedantic -O2)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_library(mips_core
-    src/machine.cpp src/decode.cpp src/execute.cpp
+add_library(mips STATIC
+    src/cpu.cpp
+    src/isa.cpp
+    src/assembler.cpp
 )
-target_include_directories(mips_core PUBLIC include)
+target_include_directories(mips PUBLIC include)
 
+<<<<<<< HEAD
 add_executable(mips-execute tools/mips-execute.cpp)
 target_link_libraries(mips-execute PRIVATE mips_core)
 >>>>>>> 834ffc9 (Initial Project import: machine+decode+execute skeleton)
+=======
+add_executable(mips-exec src/main.cpp)
+target_link_libraries(mips-exec PRIVATE mips)
+
+# Minimal tests without external framework (assert-based).
+enable_testing()
+add_executable(mips-tests
+    tests/asm_tests.cpp
+    tests/exec_tests.cpp
+)
+target_link_libraries(mips-tests PRIVATE mips)
+add_test(NAME mips-tests COMMAND mips-tests)
+>>>>>>> c2b8e10 (init)
