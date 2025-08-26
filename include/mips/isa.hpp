@@ -21,7 +21,7 @@ inline uint8_t  get_funct(uint32_t w)  { return  w        & 0x3F; }
 inline int16_t  get_imm(uint32_t w)    { return static_cast<int16_t>(w & 0xFFFF); }
 inline uint32_t get_addr(uint32_t w)   { return w & 0x03FFFFFFu; }
 
-// Declaration (note: returns Decoded, takes uint32_t)
+// Declaration (still inside the namespace)
 Decoded decode(uint32_t w);
 
 } // namespace mips
