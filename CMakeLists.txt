@@ -1,14 +1,25 @@
-
 cmake_minimum_required(VERSION 3.20)
-project(mips CXX)
+project(mips LANGUAGES CXX)
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_compile_options(-Wall -Wextra -pedantic -O2)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_library(mips_core
-    src/machine.cpp src/decode.cpp src/execute.cpp
+add_library(mips STATIC
+    src/cpu.cpp
+    src/isa.cpp
+    src/assembler.cpp
 )
-target_include_directories(mips_core PUBLIC include)
+target_include_directories(mips PUBLIC include)
 
-add_executable(mips-execute tools/mips-execute.cpp)
-target_link_libraries(mips-execute PRIVATE mips_core)
+add_executable(mips-exec src/main.cpp)
+target_link_libraries(mips-exec PRIVATE mips)
+
+# Minimal tests without external framework (assert-based).
+enable_testing()
+add_executable(mips-tests
+    tests/asm_tests.cpp
+    tests/exec_tests.cpp
+)
+target_link_libraries(mips-tests PRIVATE mips)
+add_test(NAME mips-tests COMMAND mips-tests)
