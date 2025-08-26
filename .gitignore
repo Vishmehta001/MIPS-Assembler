@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /build/
 CMakeFiles/
@@ -15,8 +16,30 @@ CMakeCache.txt
 .idea/
 .DS_Store
 =======
+=======
+>>>>>>> 834ffc9 (Initial Project import: machine+decode+execute skeleton)
 build*
 cmake-*
 .cache
 .vscode
+<<<<<<< HEAD
 >>>>>>> 159d286 (Set up template for exercise)
+=======
+=======
+
+/build/
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+.vscode/
+.idea/
+.DS_Store
+>>>>>>> 689bbfa (Initial Project import: machine+decode+execute skeleton)
+>>>>>>> 834ffc9 (Initial Project import: machine+decode+execute skeleton)

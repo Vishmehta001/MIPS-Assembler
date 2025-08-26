@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.20)
 project(mips LANGUAGES CXX)
 
@@ -41,3 +42,19 @@ target_link_libraries(my_gui_tool my_library Qt6::Core Qt6::Widgets)
 target_link_libraries(my_catch2_tests my_library Catch2::Catch2WithMain)
 target_link_libraries(my_gtest_tests my_library GTest::gtest_main)
 >>>>>>> 159d286 (Set up template for exercise)
+=======
+
+cmake_minimum_required(VERSION 3.20)
+project(mips CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_compile_options(-Wall -Wextra -pedantic -O2)
+
+add_library(mips_core
+    src/machine.cpp src/decode.cpp src/execute.cpp
+)
+target_include_directories(mips_core PUBLIC include)
+
+add_executable(mips-execute tools/mips-execute.cpp)
+target_link_libraries(mips-execute PRIVATE mips_core)
+>>>>>>> 834ffc9 (Initial Project import: machine+decode+execute skeleton)
