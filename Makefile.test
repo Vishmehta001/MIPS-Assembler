@@ -1,0 +1,27 @@
+# Simple Makefile for testing MIPS Assembler - Phase 1
+# Usage: make -f Makefile.test
+
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
+SRC_DIR = src
+TEST_DIR = tests
+
+# Source files
+SOURCES = $(SRC_DIR)/machine.cpp $(SRC_DIR)/cpu.cpp
+
+# Test target
+test_basic: $(TEST_DIR)/test_basic.cpp $(SOURCES)
+	$(CXX) $(CXXFLAGS) -o test_basic $(TEST_DIR)/test_basic.cpp $(SOURCES)
+	@echo "\n=== Compiled successfully! ==="
+	@echo "Run with: ./test_basic\n"
+
+# Run test
+run: test_basic
+	@./test_basic
+
+# Clean
+clean:
+	@rm -f test_basic
+	@echo "Cleaned test binary"
+
+.PHONY: run clean
