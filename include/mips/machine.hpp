@@ -13,8 +13,7 @@ struct Machine {
 
     std::vector<uint8_t> mem;
 
-    explicit Machine(size_t mem_size = (1u << 20))  // 1 MiB default
-        : mem(mem_size, 0) {}
+    explicit Machine(size_t mem_size = (1u << 20))  // 1 MiB default;
 
     uint32_t load32(uint32_t addr) const;
     void store32(uint32_t addr, uint32_t value);
