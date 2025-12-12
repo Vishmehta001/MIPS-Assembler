@@ -1,4 +1,4 @@
-#include "../include/mips/cpu.hpp"
+#include "../include/mips/machine.hpp"
 
 namespace mips {
 
@@ -6,7 +6,7 @@ static inline void check_align(uint32_t addr, uint32_t align) {
     if (addr % align) throw std::runtime_error("Unaligned access");
 }
 
-uint32_t CPU::load32(uint32_t addr) const {
+uint32_t Machine::load32(uint32_t addr) const {
     check_align(addr, 4);
     if (addr + 3 >= mem.size()) throw std::runtime_error("Out of bounds load");
     // MIPS commonly uses big-endian in classic specs; choose one and be consistent.
@@ -18,7 +18,7 @@ uint32_t CPU::load32(uint32_t addr) const {
     return (b0 << 24) | (b1 << 16) | (b2 << 8) | (b3);
 }
 
-void CPU::store32(uint32_t addr, uint32_t value) {
+void Machine::store32(uint32_t addr, uint32_t value) {
     check_align(addr, 4);
     if (addr + 3 >= mem.size()) throw std::runtime_error("Out of bounds store");
     mem[addr]     = static_cast<uint8_t>(value >> 24);
