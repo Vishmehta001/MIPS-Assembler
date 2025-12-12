@@ -6,14 +6,14 @@
 
 namespace mips {
 
-struct CPU {
+struct Machine {
     std::array<uint32_t, 32> r{};  // GPRs ($0..$31). r[0] must remain 0.
     uint32_t hi{0}, lo{0};
     uint32_t pc{0};
 
     std::vector<uint8_t> mem;
 
-    explicit CPU(size_t mem_size = (1u << 20))  // 1 MiB default
+    explicit Machine(size_t mem_size = (1u << 20))  // 1 MiB default
         : mem(mem_size, 0) {}
 
     uint32_t load32(uint32_t addr) const;
